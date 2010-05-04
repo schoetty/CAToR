@@ -1,0 +1,12 @@
+<table border="1" cellpadding="5" cellspacing="0">
+  <tr>
+    <th>category</th>
+    <th>student</th>
+  </tr>
+  <tr>
+    <td><%=h @exam_allocation.category.content %></td>
+    <td><%=h @exam_allocation.student.first_name %> <%=h @exam_allocation.student.surname %></td>
+  </tr>
+</table>
+<%= link_to 'Edit', edit_exam_allocation_path(@exam_allocation) %> |
+<%= link_to 'Back', exam_allocations_path %>

@@ -1,0 +1,47 @@
+<div class="post_title">
+  <h1>Create a new user</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <% form_for(@user) do |f| %>
+      <%= f.error_messages %>
+
+      <p>
+        <%= f.label :first_name %><br />
+        <%= f.text_field :first_name %>
+      </p>
+      <p>
+        <%= f.label :surname %><br />
+        <%= f.text_field :surname %>
+      </p>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+      </p>
+      <p>
+        <%= f.label :login %><br />
+        <%= f.text_field :login %>
+      </p>
+      <p>
+        <%= f.label :matriculation_number %><br />
+        <%= f.text_field :matriculation_number %>
+      </p>
+      <p>
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label :is_admin %><br />
+        <%= f.check_box :is_admin %>
+      </p>
+      <%= f.hidden_field :creator_id, :value => @current_user.id %>
+      <p>
+        <%= f.submit "Create" %>
+      </p>
+    <% end %>
+
+    <%= link_to 'Back', users_path %>
+
+  </p>
+</div>

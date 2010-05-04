@@ -1,0 +1,17 @@
+schoetty:
+  first_name: Stefan
+  surname: Schoettelndreyer
+  email: stfan@schoettelndreyer.org
+  login: schoetty
+  matriculation_number: 652351
+  password: test
+  is_admin: true
+
+johndoe:
+  first_name: John
+  surname: Doe
+  email: johndoe@hotmail.com
+  login: john
+  matriculation_number: 123456
+  password: test
+  is_admin: false

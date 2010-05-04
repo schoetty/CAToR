@@ -1,0 +1,38 @@
+  <p>
+    <b>Level:</b>
+    <%=h @item.level.difficulty %>
+  </p>
+
+  <p>
+    <b>Category:</b>
+    <%=h @item.category.content %>
+  </p>
+
+  <p>
+    <b>Creator:</b>
+    <%=h @item.creator.first_name %> <%=h @item.creator.surname %>
+  </p>
+
+  <p>
+    <b>Content:</b>
+    <%=h @item.content %>
+  </p>
+
+  <p>
+    <b>Description:</b>
+    <%=h @item.description %>
+  </p>
+
+  <% for @possible_solution in @item.possible_solutions %>
+    <p>
+      <% if @possible_solution.correct == 1 %>
+        <b>Correct Solution</b>
+      <% else %>
+        <b>Deceptive Solution</b>
+      <% end %>
+      <%=h  @possible_solution.content %><br />
+    </p>
+  <% end %>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

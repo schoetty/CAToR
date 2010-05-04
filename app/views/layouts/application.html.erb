@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>CAT on Rails</title>
+    <%= stylesheet_link_tag 'cat' %>
+    <!--[if lte IE 7]><%= stylesheet_link_tag 'ie_fixes' %><![endif]-->
+  </head>
+
+  <body>
+
+    <% if flash[:error] %>
+      <div class="flash_error"><%= flash[:error] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="flash_notice"><%= flash[:notice] %></div>
+    <% end %>
+    
+  <div id="layout_wrapper">
+  <div id="layout_edgetop"></div>
+
+  <div id="layout_container">
+
+      <div id="site_title">
+
+          <h1 class="left"><a href="#">CAT on Rails</a></h1>
+          <h2 class="right">
+            <% if @current_user %>
+              <%=h @current_user.first_name -%>
+              <%=h @current_user.surname -%>
+              logged in
+            <% end %>
+          </h2>
+
+          <div class="clearer">&nbsp;</div>
+
+      </div>
+
+      <div id="top_separator"></div>
+
+      <div id="navigation">
+
+      <% if @current_user %>
+        <% if @current_user.is_admin %>
+
+          <div id="tabs">
+
+              <ul>
+                <li><%= link_to '<span>Users</span>', users_path %></li>
+                <li><%= link_to '<span>Categories</span>', categories_path %></li>
+                <li><%= link_to '<span>Items</span>', items_path %></li>
+                <li><%= link_to '<span>Exam Allocations</span>', exam_allocations_path %></li>
+              </ul>
+
+              <div class="clearer">&nbsp;</div>
+
+          </div>
+        <% else %>
+          <div id="tabs">
+              <ul>
+                <li><%= link_to '<span>Exams</span>', exam_list_path %></li>
+              </ul>
+              <div class="clearer">&nbsp;</div>
+          </div>
+        <% end %>
+      <% end %>
+      </div>
+
+      <div class="spacer h5"></div>
+
+      <div id="main">
+
+          <div class="left" id="main_left">
+
+              <div id="main_left_content">
+
+                  <div class="post">
+
+                      <%= yield %>
+
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="right" id="main_right">
+
+              <div id="sidebar">
+
+  <!--				<div class="box">
+                      <div class="box_title">Search</div>
+                      <div class="box_body">
+                          <form method="get" id="searchform" action="#">
+                          <div>
+                              <table class="search">
+                              <tr>
+                                  <td><input type="text" value="" name="s" id="s" /></td>
+                                  <td style="padding-left: 10px"><input type="image" src="img/button_go.gif" /></td>
+                              </tr>
+                              </table>
+                          </div>
+                          </form>
+                      </div>
+                      <div class="box_bottom"></div>
+                  </div>
+
+                  <div class="box">
+                      <div class="box_title">Archives</div>
+                      <div class="box_body">
+                          <ul>
+                              <li><a href="#">December 2007</a> (5)</li>
+                              <li><a href="#">June 2007</a> (2)</li>
+                              <li><a href="#">May 2007</a> (6)</li>
+                              <li><a href="#">March 2007</a> (12)</li>
+                              <li><a href="#">February 2007</a> (8)</li>
+                              <li><a href="#">May 2007</a> (10)</li>
+                          </ul>
+                      </div>
+                      <div class="box_bottom"></div>
+                  </div>
+  -->
+                  <div class="box">
+                      <div class="box_title">login</div>
+                      <div class="box_body p10">
+                          <% unless @current_user %>
+
+                            <% form_tag sessions_path do -%>
+                              <p><label for="login">Login</label><br/>
+                              <%= text_field_tag 'login' %></p>
+
+                              <p><label for="password">Password</label><br/>
+                              <%= password_field_tag 'password' %></p>
+
+                              <p><%= submit_tag 'Log in' %></p>
+                            <% end %>
+
+                          <% else %>
+                            <%=h @current_user.login %> logged in | <%= link_to "logout", logout_path %>
+                          <% end %>
+                      </div>
+                      <div class="box_bottom"></div>
+                  </div>
+
+              </div>
+          </div>
+
+          <div class="clearer">&nbsp;</div>
+
+      </div>
+
+      <div id="footer">
+
+          <div class="left">Stefan Sch&ouml;ttelndreyer</div>
+
+          <div class="right">University of Siegen</div>
+
+          <div class="clearer">&nbsp;</div>
+
+      </div>
+  </div>
+  <div id="layout_edgebottom"></div>
+  </div>
+
+</body>
+</html>

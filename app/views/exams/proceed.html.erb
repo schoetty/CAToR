@@ -1,0 +1,33 @@
+<div class="post_title">
+  <h1><%= @category.content %></h1>
+</div>
+<div class="post_body">
+
+  <% if @latency -%>
+    <p>latency: <%=h @latency %></p>
+  <% end -%>
+
+  <% if @foo -%>
+    <p><%=h @foo %></p>
+  <% end -%>
+
+  <p>
+    <% if @item %>
+      <%= @item.content %>
+
+      <% form_for :solution do |f| %>
+        <% @possible_solutions.each do |s| %>
+          <p><%= f.check_box s.id %> <%= s.content %></p>
+        <% end %>
+        <%= f.hidden_field :item_id, :value => @possible_solutions[0].item_id %>
+        <%= f.submit :submit %>
+      <% end %>
+
+    <% end %>
+  </p>
+  <br />
+  <p>
+    <img src="http://chart.apis.google.com/chart?cht=lc&chg=10,14,1,5&chco=759EBC&chds=-3,3&chxt=x,y&chxl=0:|0|<%= @num_of_items %>1:|-4|-3|-2|-1|0|1|2|3|4&chs=720x250&chd=t:0,<%= @exam.thetas %>" alt="plot" />
+  </p>
+
+</div>

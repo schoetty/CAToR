@@ -1,0 +1,52 @@
+<div class="post_title">
+  <h1>Crating a new item</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <%= error_messages_for :item %>
+    <%= error_messages_for :possible_solution %>
+
+    <% form_tag :action => :create do %>
+
+    <div class="border">
+      <p>
+        Category<br />
+        <%= collection_select(:item, :category_id, @categories, :id, :content, options = {:prompt => "Select a category"}, html_options = {:class => "selectfield"}) %>
+      </p>
+      <p>
+        Difficulty Level<br />
+        <%= collection_select(:item, :level_id, @levels, :id, :difficulty, options = {:prompt => "Select a difficulty level"}, html_options = {:class => "selectfield"}) %>
+      </p>
+    </div>
+    <div class="border">
+      <%= hidden_field :item, :creator_id, :value => @current_user.id %>
+      <p>
+        Content<br />
+        <%= text_field :item, :content, :class => "textfield" %>
+      </p>
+      <p>
+        Description<br />
+        <%= text_field :item, :description, :class => "textfield" %>
+      </p>
+    </div>
+    <div class="border">
+      <% @item.possible_solutions.each_with_index do |possible_solution, index| -%>
+        <% fields_for "possible_solutions[#{index+1}]", possible_solution do |f| -%>
+          <p>
+            Solution <%= index+1 %>:<br />
+            <%= f.check_box :correct %> correct solution<br />
+            <%= f.text_field :content, :class => "textfield" %>
+          </p>
+        <% end -%>
+      <% end -%>
+    </div>
+      <p>
+        <%= submit_tag "Create" %>
+      </p>
+    <% end %>
+
+    <%= link_to 'Back', items_path %>
+
+  </p>
+</div>

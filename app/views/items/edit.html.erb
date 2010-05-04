@@ -1,0 +1,46 @@
+<div class="post_title">
+  <h1>Editing item</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <%= error_messages_for :item %>
+    <% form_tag :action => :update do -%>
+      <input name="_method" type="hidden" value="put" />
+      <div class="border">
+        <p>
+          Category<br />
+          <%= collection_select(:item, :category_id, @categories, :id, :content, {:prompt => "Select a category"}, {:class => "selectfield"}) %>
+        </p>
+        <p>
+          Difficulty Level<br />
+          <%= collection_select(:item, :level_id, @levels, :id, :difficulty, {:prompt => "Select a difficulty level"}, {:class => "selectfield"}) %>
+        </p>
+      </div>
+      <div class="border">
+        <p>
+          Content<br />
+          <%= text_field :item, :content, :class => "textfield" %>
+        </p>
+        <p>
+          Description<br />
+          <%= text_field :item, :description, :class => "textfield" %>
+        </p>
+      </div>
+      <div class="border">
+        <% for @possible_solution in @item.possible_solutions %>
+          <%= error_messages_for :possible_solution %>
+          <% fields_for "possible_solution[]" do |f| %>
+            <p>Possible Solution &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :correct %> correct?<br /><%= f.text_field :content, :class => "textfield" %></p>
+          <% end %>
+        <% end %>
+      </div>
+      <p>
+        <%= submit_tag "Update" %>
+      </p>
+    <% end -%>
+
+    <%= link_to 'Show', @item %> |
+    <%= link_to 'Back', items_path %>
+  </p>
+</div>

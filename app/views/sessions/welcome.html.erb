@@ -1,0 +1,12 @@
+<% if @current_user.is_admin %>
+
+  Welcome <%= @current_user.first_name %>. You have admin privileges.
+
+<% else %>
+
+  Welcome <%= @current_user.first_name %>.
+  <% if @exam_allocations.count > 0 %>
+    You have <%= @exam_allocations.count %> pending exam(s).
+  <% end %>
+
+<% end %>

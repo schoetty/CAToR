@@ -1,0 +1,22 @@
+<div class="post_title">
+  <h1>your pending exams</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <table cellpadding="8" cellspacing="0" class="listing">
+      <tr>
+        <th>category</th>
+        <th>&nbsp;</th>
+      </tr>
+
+    <% for exam_allocation in @exam_allocations %>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%=h exam_allocation.category.content %></td>
+        <td><%= link_to 'Start', { :controller => :exams, :action => :new, :id => exam_allocation.category.id} %></td>
+      </tr>
+    <% end %>
+    </table>
+
+  </p>
+</div>

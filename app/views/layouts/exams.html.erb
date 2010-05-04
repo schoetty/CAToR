@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>CAT on Rails</title>
+    <%= stylesheet_link_tag 'cat' %>
+    <!--[if lte IE 7]><%= stylesheet_link_tag 'ie_fixes' %><![endif]-->
+  </head>
+
+  <body>
+
+    <% if flash[:error] %>
+      <div class="flash_error"><%= flash[:error] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="flash_notice"><%= flash[:notice] %></div>
+    <% end %>
+    
+  <div id="layout_wrapper">
+    <div id="layout_edgetop"></div>
+
+    <div id="layout_container">
+      <div id="site_title">
+        <h1 class="left"><a href="#">CAT on Rails</a></h1>
+        <h2 class="right">
+          <% if @current_user %>
+            <%=h @current_user.first_name -%>
+            <%=h @current_user.surname -%>
+            logged in
+          <% end %>
+        </h2>
+        <div class="clearer">&nbsp;</div>
+      </div>
+
+      <div id="top_separator"></div>
+      <div id="navigation"></div>
+
+      <div class="spacer h5"></div>
+
+      <div id="main">
+<!--        <div class="left" id="main_left"> -->
+<!--          <div id="main_left_content"> -->
+            <div class="post">
+              <%= yield %>
+            </div>
+<!--          </div> -->
+<!--        </div> -->
+<!--        <div class="right" id="main_right"> -->
+
+<!--        </div> -->
+        <div class="clearer">&nbsp;</div>
+      </div>
+
+      <div id="footer">
+        <div class="left">Stefan Sch&ouml;ttelndreyer</div>
+        <div class="right">University of Siegen</div>
+        <div class="clearer">&nbsp;</div>
+      </div>
+    </div>
+    <div id="layout_edgebottom"></div>
+  </div>
+
+  </body>
+</html>

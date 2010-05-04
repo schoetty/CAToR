@@ -1,0 +1,16 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  level_id: 1
+  category_id: 1
+  creator_id: 1
+  content: MyText
+  description: MyText
+
+two:
+  level_id: 1
+  category_id: 1
+  creator_id: 1
+  content: MyText
+  description: MyText
+

@@ -1,0 +1,41 @@
+<div class="post_title">
+  <h1>Listing users</h1>
+</div>
+<div class="post_body">
+  <p>
+    
+    <%= link_to 'New user', new_user_path %>
+    
+    <%= will_paginate @users %>
+    <table cellspacing="0" cellpadding="8" class="listing">
+      <tr>
+        <th>First name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Login</th>
+        <th>Matriculation number</th>
+        <th>Is admin</th>
+        <th colspan="3">&nbsp;</th>
+      </tr>
+
+    <% @users.each do |user|  -%>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%=h user.first_name %></td>
+        <td><%=h user.surname %></td>
+        <td><%=h user.email %></td>
+        <td><%=h user.login %></td>
+        <td><%=h user.matriculation_number %></td>
+        <td><%=h user.is_admin %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+    <br />
+    <%= will_paginate @users %>
+
+    <br />
+
+  </p>
+</div>

@@ -1,0 +1,32 @@
+<div class="post_title">
+  <h1>Listing exam allocations</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <%= link_to 'New exam allocation', new_exam_allocation_path %>
+    
+    <%= will_paginate @exam_allocations %>
+    <br />
+    <table cellpadding="8" cellspacing="0" class="listing">
+      <tr>
+        <th>category</th>
+        <th>student</th>
+        <th colspan="2">&nbsp;</th>
+      </tr>
+
+    <% @exam_allocations.each do |exam_allocation|  -%>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%=h exam_allocation.category.content %></td>
+        <td><%=h exam_allocation.student.first_name %> <%=h exam_allocation.student.surname %></td>
+        <td><%= link_to 'Edit', edit_exam_allocation_path(exam_allocation) %></td>
+        <td><%= link_to 'Destroy', exam_allocation, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+    </table>
+    <br />
+    <%= will_paginate @exam_allocations %>
+    <br />
+
+  </p>
+</div>

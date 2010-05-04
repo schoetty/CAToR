@@ -1,0 +1,23 @@
+<div class="post_title">
+  <h1>Editing category</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <% form_for(@category) do |f| %>
+      <%= f.error_messages %>
+
+      <p>
+        <%= f.label :content %><br />
+        <%= f.text_field :content %>
+      </p>
+      <p>
+        <%= f.submit "Update" %>
+      </p>
+    <% end %>
+
+    <%= link_to 'Show', @category %> |
+    <%= link_to 'Back', categories_path %>
+
+  </p>
+</div>

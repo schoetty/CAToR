@@ -1,0 +1,33 @@
+<p>
+  <b>First name:</b>
+  <%=h @user.first_name %>
+</p>
+
+<p>
+  <b>Surname:</b>
+  <%=h @user.surname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @user.login %>
+</p>
+
+<p>
+  <b>Matriculation number:</b>
+  <%=h @user.matriculation_number %>
+</p>
+
+<p>
+  <b>Is admin:</b>
+  <%=h @user.is_admin %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

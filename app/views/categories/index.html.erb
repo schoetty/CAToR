@@ -1,0 +1,31 @@
+<div class="post_title">
+  <h1>Listing categories</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <%= link_to 'New category', new_category_path %>
+    
+    <%= will_paginate @categories %>
+    <br />
+    <table cellpadding="8" cellspacing="0" class="listing">
+      <tr>
+        <th>Content</th>
+        <th colspan="2">&nbsp;</th>
+      </tr>
+
+    <% @categories.each do |category|  -%>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%=h category.content %></td>
+        <td><%= link_to 'Edit', edit_category_path(category) %></td>
+        <td><%= link_to 'Destroy', category, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end -%>
+    </table>
+    <br />
+    <%= will_paginate @categories %>
+
+    <br />
+
+  </p>
+</div>

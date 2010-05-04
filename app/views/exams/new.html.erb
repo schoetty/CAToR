@@ -1,0 +1,26 @@
+<div class="post_title">
+  <h1>Exam</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <p>
+      If you press the "Start Exam"-Button your exam will start immediately and you
+      will not have the possibility to pause or stop the test until it's finished.
+    </p>
+    <p>
+      <%= link_to 'Back', exam_list_path %>
+    </p>
+
+    <% form_for(@exam) do |f| %>
+      <%= f.error_messages %>
+
+      <%= f.hidden_field :user_id, :value => @current_user.id %>
+      <%= f.hidden_field :category_id, :value => @category_id %>
+      <p>
+        <%= f.submit "Start Exam" %>
+      </p>
+    <% end %>
+
+  </p>
+</div>

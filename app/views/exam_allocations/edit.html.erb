@@ -1,0 +1,26 @@
+<div class="post_title">
+  <h1>Editing exam allocation</h1>
+</div>
+<div class="post_body">
+  <p>
+
+    <% form_for(@exam_allocation) do |f| %>
+      <%= f.error_messages %>
+      <p>
+        <%= f.label :category_id %><br />
+        <%= collection_select(:exam_allocation, :category_id, @categories, :id, :content, options = {:prompt => "-Select a category"}) %>
+      </p>
+      <p>
+        <%= f.label :student_id %><br />
+        <%= collection_select(:exam_allocation, :student_id, @users, :id, :matriculation_number, options = {:prompt => "-Select a student"}) %>
+      </p>
+      <p>
+        <%= f.submit "Update" %>
+      </p>
+    <% end %>
+
+    <%= link_to 'Show', @exam_allocation %> |
+    <%= link_to 'Back', exam_allocations_path %>
+
+  </p>
+</div>
